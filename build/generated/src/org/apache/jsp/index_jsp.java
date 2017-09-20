@@ -244,6 +244,7 @@ for(Map.Entry<Integer , Item> list: ca.getCartItems().entrySet() ){
       out.write("        \n");
       out.write("        <ul>\n");
       out.write("            <li><a href=\"san_pham\">Danh sach san pham</a></li>\n");
+      out.write("            <li><a href=\"san_phams?pages=1&command=ao_nam\" title=\"user\">List of user</a></li>\n");
       out.write("        </ul>\n");
       out.write("    </body>\n");
       out.write("</html>\n");

@@ -72,6 +72,8 @@ public class khach_hang_query {
             kh.setTen_khach_hang(this.results.getString("ten_khach_hang"));
             kh.setEmail(this.results.getString("email"));
             kh.setMat_khau(this.results.getString("mat_khau"));
+            kh.setDia_chi(this.results.getString("dia_chi"));
+            kh.setDien_thoai(this.results.getString("dien_thoai"));
             
             list.add(kh);
         }
@@ -94,6 +96,8 @@ public class khach_hang_query {
             kh.setTen_khach_hang(this.results.getString("ten_khach_hang"));
             kh.setEmail(this.results.getString("email"));
             kh.setMat_khau(this.results.getString("mat_khau"));
+            kh.setDia_chi(this.results.getString("dia_chi"));
+            kh.setDien_thoai(this.results.getString("dien_thoai"));
             
             list.add(kh);
         }

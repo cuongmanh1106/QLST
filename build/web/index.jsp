@@ -73,6 +73,7 @@
         
         <ul>
             <li><a href="san_pham">Danh sach san pham</a></li>
+            <li><a href="san_phams?pages=1&command=ao_nam" title="user">List of user</a></li>
         </ul>
     </body>
 </html>

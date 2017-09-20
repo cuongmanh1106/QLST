@@ -120,6 +120,529 @@ public class san_pham_query {
         return list;
     }
     
+    public ArrayList<m_san_pham> Doc_san_pham_ao_nam() throws SQLException
+    {
+        String query = "select * from san_pham where ma_loai = 1";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+       
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+    }
+    
+    public ArrayList<m_san_pham> Doc_san_pham_quan_nam() throws SQLException
+    {
+        String query = "select * from san_pham where ma_loai = 2";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+       
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+    }
+    
+    
+    public ArrayList<m_san_pham> Doc_san_pham_ao_nu() throws SQLException
+    {
+        String query = "select * from san_pham where ma_loai = 3";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+       
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+    }
+    
+     public ArrayList<m_san_pham> Doc_san_pham_quan_nu() throws SQLException
+    {
+        String query = "select * from san_pham where ma_loai = 4";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+       
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+    }
+     
+    public ArrayList<m_san_pham> Doc_san_pham_quan_ao() throws SQLException
+    {
+        String query = "SELECT * FROM san_pham s INNER JOIN loai_san_pham lsp ON s.ma_loai = lsp.ma_loai WHERE lsp.ma_loai_cha=1";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+       
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+    }
+      
+    public ArrayList<m_san_pham> Doc_san_pham_thuc_pham_tuoi_song() throws SQLException
+    {
+        String query = "SELECT * FROM san_pham s INNER JOIN loai_san_pham lsp ON s.ma_loai = lsp.ma_loai WHERE lsp.ma_loai_cha=2";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+       
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+    return list;
+    }
+        
+    public ArrayList<m_san_pham> Doc_san_pham_thuc_an_nhanh() throws SQLException
+    {
+        String query = "SELECT * FROM san_pham s INNER JOIN loai_san_pham lsp ON s.ma_loai = lsp.ma_loai WHERE lsp.ma_loai_cha=3";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+       
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+    }
+    
+    
+    public ArrayList<m_san_pham> Doc_san_pham_ao_nam_pt(int vt , int limit) throws SQLException
+    {
+        String query = "select * from san_pham where ma_loai = 1 limit ?,?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+        ps.setInt(1, vt);
+        ps.setInt(2, limit);
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+    }
+    
+    public ArrayList<m_san_pham> Doc_san_pham_quan_nam_pt(int vt , int limit) throws SQLException
+    {
+        String query = "select * from san_pham where ma_loai = 2 limit ?,?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+        ps.setInt(1, vt);
+        ps.setInt(2, limit);
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+    }
+    
+    public ArrayList<m_san_pham> Doc_san_pham_ao_nu_pt(int vt , int limit) throws SQLException
+    {
+        String query = "select * from san_pham where ma_loai = 3 limit ?,?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+        ps.setInt(1, vt);
+        ps.setInt(2, limit);
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+    }
+    
+    public ArrayList<m_san_pham> Doc_san_pham_quan_nu_pt(int vt , int limit) throws SQLException
+    {
+        String query = "select * from san_pham where ma_loai = 4 limit ?,?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+        ps.setInt(1, vt);
+        ps.setInt(2, limit);
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+    }
+    
+    public ArrayList<m_san_pham> Doc_san_pham_quan_ao_pt(int vt, int limit) throws SQLException
+    {
+        String query = "SELECT * FROM san_pham s INNER JOIN loai_san_pham lsp ON s.ma_loai = lsp.ma_loai WHERE lsp.ma_loai_cha=1 limit ?,?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+        ps.setInt(1, vt);
+        ps.setInt(2, limit);
+        
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+    }
+    
+    public ArrayList<m_san_pham> Doc_san_pham_thuc_pham_tuoi_song_pt(int vt, int limit) throws SQLException
+    {
+        String query = "SELECT * FROM san_pham s INNER JOIN loai_san_pham lsp ON s.ma_loai = lsp.ma_loai WHERE lsp.ma_loai_cha=2 limit ?,?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+        ps.setInt(1, vt);
+        ps.setInt(2, limit);
+        
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+    }
+    
+    public ArrayList<m_san_pham> Doc_san_pham_thuc_pham_thuc_an_nhanh_pt(int vt, int limit) throws SQLException
+    {
+        String query = "SELECT * FROM san_pham s INNER JOIN loai_san_pham lsp ON s.ma_loai = lsp.ma_loai WHERE lsp.ma_loai_cha=3 limit ?,?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+        ps.setInt(1, vt);
+        ps.setInt(2, limit);
+        
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+    }
+    
+    
+    public ArrayList<m_san_pham> Doc_top_san_pham() throws SQLException
+    {
+        String query = "SELECT * FROM `san_pham` ORDER BY so_lan_xem DESC limit 0,4";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+    }
+    
+    public ArrayList<m_san_pham> Doc_san_pham_theo_ma_loai(int ma_loai) throws SQLException
+    {
+        String query = "SELECT * FROM `san_pham` where ma_loai = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setInt(1, ma_loai);
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+    }
+    
+    public ArrayList<m_san_pham> Doc_san_pham_theo_ma_loai_pt(int ma_loai,int vt, int limit) throws SQLException
+    {
+        String query = "SELECT * FROM `san_pham` where ma_loai = ? limit ?,?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setInt(1, ma_loai);
+        ps.setInt(2, vt);
+        ps.setInt(3, limit);
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+    }
+    
+    
     public int dem_san_pham() throws SQLException
     {
         String query = "select count(ma_san_pham) from san_pham";
@@ -188,7 +711,7 @@ public class san_pham_query {
     
     public void cap_nhat_san_pham(m_san_pham sp) throws SQLException
     {
-        String sql = "update san_pham set ten_san_pham = ? , ma_loai=?,mo_ta_tom_tat=?,mo_ta_chi_tiet=?,don_gia=?,hinh=?,san_pham_moi=?";
+        String sql = "update san_pham set ten_san_pham = ? , ma_loai=?,mo_ta_tom_tat=?,mo_ta_chi_tiet=?,don_gia=?,hinh=?,san_pham_moi = ? where ma_san_pham=?";
         PreparedStatement ps = conn.prepareStatement(sql);
         
         ps.setString(1, sp.getTen_san_pham());
@@ -198,8 +721,110 @@ public class san_pham_query {
         ps.setInt(5, sp.getDon_gia());
         ps.setString(6, sp.getHinh());
         ps.setInt(7, sp.getSan_pham_moi());
+        ps.setInt(8, sp.getMa_san_pham());
         
         ps.executeUpdate();
+    }
+    
+    public void cap_nhat_view(int ma_san_pham) throws SQLException
+    {
+        String sql = "update san_pham set so_lan_xem = so_lan_xem + 1 where ma_san_pham = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, ma_san_pham);
+        ps.executeUpdate();
+    }
+    
+    public ArrayList<m_san_pham> sap_xep_don_gia_nho_lon() throws SQLException
+    {
+        String sql = "SELECT * FROM `san_pham` ORDER BY don_gia";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+        
+        
+    }
+    
+     public ArrayList<m_san_pham> sap_xep_don_gia_lon_nho() throws SQLException
+    {
+        String sql = "SELECT * FROM `san_pham` ORDER BY don_gia DESC";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+        
+        
+    }
+     
+     public ArrayList<m_san_pham> tim_kiem_san_pham(String tim) throws SQLException
+    {
+        String sql = "SELECT * FROM san_pham where ten_san_pham like '%"+tim+"%' ";
+        PreparedStatement ps = conn.prepareStatement(sql);
+      
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_san_pham sp = new m_san_pham();
+            
+            sp.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            sp.setTen_san_pham(this.results.getString("ten_san_pham"));
+            sp.setMa_loai(this.results.getInt("ma_loai"));
+            sp.setMo_ta_tom_tat(this.results.getString("mo_ta_tom_tat"));
+            sp.setMo_ta_chi_tiet(this.results.getString("mo_ta_chi_tiet"));
+            sp.setDon_gia(this.results.getInt("don_gia"));
+            sp.setHinh(this.results.getString("hinh"));
+            sp.setSan_pham_moi(this.results.getInt("san_pham_moi"));
+            sp.setSo_lan_xem(this.results.getInt("so_lan_xem"));
+            sp.setNgay_tao(this.results.getString("ngay_tao"));
+            list.add(sp);
+            
+        }
+        return list;
+        
+        
     }
     
     
@@ -211,15 +836,16 @@ public class san_pham_query {
         
         //Doc All
         
-        /*
+        
         ArrayList<m_san_pham> list = new ArrayList<>();
         
-        list = sq.Doc_san_pham();
-        for(m_san_pham s:list)
-        {
-            System.out.println(s.getTen_san_pham());
-        }
-        */
+//        list = sq.Doc_san_pham();
+//        for(m_san_pham s:list)
+//        {
+//            System.out.println(s.getTen_san_pham());
+//        }
+        
+//        System.err.print(list.size());
         //Phan trang
         /*
          ArrayList<m_san_pham> list = new ArrayList<>();
@@ -253,9 +879,23 @@ public class san_pham_query {
         
         //Doc 1 sp------------------------------------->
         
-        sp = sq.doc_san_pham_theo_ma_san_pham(2);
-        System.out.print(sp.getMo_ta_chi_tiet());
+//        sp = sq.doc_san_pham_theo_ma_san_pham(2);
+//        System.out.print(sp.getMo_ta_chi_tiet());
         
+        //search------------------------>
+//        list = sq.tim_kiem_san_pham("qiq");
+//        System.out.print(list.size());
+//        for(m_san_pham a:list)
+//        {
+//            System.out.println(a.getTen_san_pham());
+//        }
+        
+//         list = sq.Doc_san_pham_theo_ma_loai(1);
+//        System.out.print(list.size());
+//        for(m_san_pham a:list)
+//        {
+//            System.out.println(a.getTen_san_pham());
+//        }
         
         
         

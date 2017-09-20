@@ -111,14 +111,39 @@ public class loai_san_pham_query {
         
         this.results = ps.executeQuery();
         
-        this.results.next();
+        if(this.results.next()){
         
-        m_loai_san_pham ml = new m_loai_san_pham();
+            m_loai_san_pham ml = new m_loai_san_pham();
+
+            ml.setMa_loai(this.results.getInt("ma_loai"));
+            ml.setMa_loai_cha(this.results.getInt("ma_loai_cha"));
+            ml.setTen_loai(this.results.getString("ten_loai"));
+            return ml;
+        }
+        return null;
+    }
+    
+    public ArrayList<m_loai_san_pham> Doc_loai_san_pham_theo_ma_loai_cha(int ma_loai_cha) throws SQLException
+    {
+        String query = "select * from loai_san_pham where ma_loai_cha=?";
+        PreparedStatement ps = conn.prepareStatement(query);
         
-        ml.setMa_loai(this.results.getInt("ma_loai"));
-        ml.setMa_loai_cha(this.results.getInt("ma_loai_cha"));
-        ml.setTen_loai(this.results.getString("ten_loai"));
-        return ml;
+        ps.setInt(1, ma_loai_cha);
+        
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_loai_san_pham> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+           m_loai_san_pham ml = new m_loai_san_pham();
+           ml.setMa_loai(this.results.getInt("ma_loai"));
+           ml.setMa_loai_cha(this.results.getInt("ma_loai_cha"));
+           ml.setTen_loai(this.results.getString("ten_loai"));
+           list.add(ml);
+        }
+        
+        return list;
     }
     
     public int dem_loai_san_pham() throws SQLException
@@ -218,6 +243,8 @@ public class loai_san_pham_query {
         System.out.print(ml.getTen_loai());
         */
         
+//        ml = lq.Doc_loai_san_pham_theo_ma_loai(5);
+//        System.out.print(ml);
         
     }
     

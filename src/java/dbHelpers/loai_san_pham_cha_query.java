@@ -94,6 +94,26 @@ public class loai_san_pham_cha_query {
          return list;
      }
      
+      public m_loai_san_pham_cha Doc_loai_san_pham_cha_phan_trang(int ma_loai_cha) throws SQLException
+     {
+         String query ="select * from loai_san_pham_cha where ma_loai_cha = ? ";
+         PreparedStatement ps = conn.prepareStatement(query);
+         
+         ps.setInt(1, ma_loai_cha);
+         
+         this.results = ps.executeQuery();
+         
+        
+         this.results.next();
+         
+        m_loai_san_pham_cha lc =  new m_loai_san_pham_cha();
+        lc.setMa_loai_cha(this.results.getInt("ma_loai_cha"));
+        lc.setTen_loai(this.results.getString("ten_loai"));
+             
+         
+         return lc;
+     }
+     
       public int count_ma_san_pham_cha() throws SQLException
      {
          String query ="select count(ma_loai_cha) from loai_san_pham_cha";
