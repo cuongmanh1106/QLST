@@ -3,12 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/QLST/src/java/admin_controller/khach_hang_admin.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/QLST/web/include/menu_admin.jsp</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/QLST/src/java/admin_controller/sua_nguoi_dung_admin.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/QLST/web/views/nguoi_dung/v_sua_nguoi_dung.jsp</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/QLST/src/java/admin_controller/form_sua.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/QLST/web/views/nguoi_dung/v_them_nguoi_dung.jsp</file>
             <file>file:/C:/Users/Admin/Documents/NetBeansProjects/QLST/web/include/content_admin.jsp</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/QLST/web/views/khach_hang_admin/v_khach_hang.jsp</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/QLST/src/java/dbHelpers/khach_hang_query.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/QLST/src/java/admin_controller/san_phams_admin.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/QLST/src/java/admin_controller/them_nguoi_dung_admin.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/QLST/src/java/admin_controller/form_them.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/QLST/src/java/dbHelpers/nguoi_dung_query.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/QLST/src/java/admin_controller/nguoi_dung_admin.java</file>
         </group>
     </open-files>
 </project-private>

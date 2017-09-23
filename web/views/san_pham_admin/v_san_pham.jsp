@@ -16,8 +16,18 @@
     
     
    
+String thongbao ="";
+   if(request.getAttribute("thongbao")!=null)
+       thongbao = (String)request.getAttribute("thongbao");
+   
+   if(thongbao.equals("error"))
+   {
     
     
+%>
+<%= "<script> alert('Đã có HÓA ĐƠN chưa SẢN PHẨM NÀY') </script>"%>
+<%
+   }
 %>
 
 <div id="page-wrapper">

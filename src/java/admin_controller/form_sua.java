@@ -5,8 +5,10 @@
  */
 package admin_controller;
 
+import dbHelpers.khach_hang_query;
 import dbHelpers.loai_san_pham_cha_query;
 import dbHelpers.loai_san_pham_query;
+import dbHelpers.nguoi_dung_query;
 import dbHelpers.san_pham_query;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,8 +22,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.m_khach_hang;
 import model.m_loai_san_pham;
 import model.m_loai_san_pham_cha;
+import model.m_nguoi_dung;
 import model.m_san_pham;
 
 /**
@@ -125,6 +129,31 @@ public class form_sua extends HttpServlet {
                     url ="/loai_san_pham_admin.jsp";
                     request.setAttribute("list", list_cha);
                     request.setAttribute("loai_san_pham", lsp);
+                break;
+                
+                case "khach_hang":
+                    int ma_khach_hang = Integer.parseInt(request.getParameter("ma_khach_hang"));
+                    khach_hang_query kq = new khach_hang_query();
+                    m_khach_hang kh = new m_khach_hang();
+                    
+                    kh = kq.doc_khach_hang_theo_ma_khach_hang(ma_khach_hang);
+                    
+                    view = "views/khach_hang_admin/v_sua_khach_hang.jsp";
+                    url = "/khach_hang_admin.jsp";
+                    request.setAttribute("kh", kh);
+                break;
+                    
+                case "nguoi_dung":
+                    
+                    int ma_nguoi_dung = Integer.parseInt(request.getParameter("ma_nguoi_dung"));
+                    nguoi_dung_query nq = new nguoi_dung_query();
+                    m_nguoi_dung nd = new m_nguoi_dung();
+                    
+                    nd = nq.Doc_nguoi_dung_theo_ma_nguoi_dung(ma_nguoi_dung);
+                    
+                    view = "views/nguoi_dung/v_sua_nguoi_dung.jsp";
+                    url = "/nguoi_dung_admin.jsp";
+                    request.setAttribute("nd", nd);
                 break;
                     
                    

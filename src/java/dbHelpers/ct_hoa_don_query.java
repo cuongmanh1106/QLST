@@ -12,6 +12,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -68,6 +69,54 @@ public class ct_hoa_don_query {
         ps.setInt(4, ct.getDon_gia());
         
         ps.executeUpdate();
+    }
+    
+    public ArrayList<m_chi_tiet_hoa_don> Doc_chi_tiet_hoa_don_theo_ma_hoa_don(int ma_hoa_don) throws SQLException
+    {
+        String sql = "select * from chi_tiet_hoa_don where ma_hoa_don = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, ma_hoa_don);
+        
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_chi_tiet_hoa_don> list = new ArrayList<>();
+                
+        while(this.results.next())
+        {
+            m_chi_tiet_hoa_don ct = new m_chi_tiet_hoa_don();
+            
+            ct.setStt(this.results.getInt("stt"));
+            ct.setMa_hoa_don(this.results.getInt("ma_hoa_don"));
+            ct.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            ct.setSo_luong(this.results.getInt("so_luong"));
+            ct.setDon_gia(this.results.getInt("don_gia"));
+            list.add(ct);
+        }
+        return list;
+    }
+    
+    public ArrayList<m_chi_tiet_hoa_don> Doc_chi_tiet_hoa_don_theo_ma_san_pham(int ma_san_pham) throws SQLException
+    {
+        String sql = "select * from chi_tiet_hoa_don where ma_san_pham = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, ma_san_pham);
+        
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_chi_tiet_hoa_don> list = new ArrayList<>();
+                
+        while(this.results.next())
+        {
+            m_chi_tiet_hoa_don ct = new m_chi_tiet_hoa_don();
+            
+            ct.setStt(this.results.getInt("stt"));
+            ct.setMa_hoa_don(this.results.getInt("ma_hoa_don"));
+            ct.setMa_san_pham(this.results.getInt("ma_san_pham"));
+            ct.setSo_luong(this.results.getInt("so_luong"));
+            ct.setDon_gia(this.results.getInt("don_gia"));
+            list.add(ct);
+        }
+        return list;
     }
     
     public static void main (String[] args) throws SQLException

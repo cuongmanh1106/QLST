@@ -153,6 +153,30 @@ public class khach_hang_query {
         return null;
     }
     
+     public m_khach_hang doc_khach_hang_theo_ma_khach_hang(int ma_khach_hang) throws SQLException
+    {
+        String sql = "select * from khach_hang where ma_khach_hang=?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, ma_khach_hang);
+        
+        
+        this.results = ps.executeQuery();
+        
+        if(this.results.next())
+        {
+            m_khach_hang kh = new m_khach_hang();
+            kh.setMa_khach_hang(this.results.getInt("ma_khach_hang"));
+            kh.setTen_khach_hang(this.results.getString("ten_khach_hang"));
+            kh.setEmail(this.results.getString("email"));
+            kh.setDien_thoai(this.results.getString("dien_thoai"));
+            kh.setMat_khau(this.results.getString("mat_khau"));
+            kh.setDia_chi(this.results.getString("dia_chi"));
+            return kh;
+            
+        }
+        return null;
+    }
+    
     public boolean check_mail(String email) throws SQLException
     {
         String sql = "select * from khach_hang where email = ?";
@@ -169,7 +193,40 @@ public class khach_hang_query {
     }
     
     
+    public void  sua_khach_hang(m_khach_hang kh) throws SQLException
+    {
+        String query = "update khach_hang set ten_khach_hang = ?, dien_thoai=? where ma_khach_hang=?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+        ps.setString(1, kh.getTen_khach_hang());
+        ps.setString(2, kh.getDien_thoai());
+        ps.setInt(3, kh.getMa_khach_hang());
+        
+        ps.executeUpdate();
+    }
     
+    public ArrayList<m_khach_hang> tim_khach_hang(String ten_khach_hang) throws SQLException
+    {
+        String query = "select * from khach_hang where ten_khach_hang like '%"+ten_khach_hang+"%' ";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_khach_hang> list = new ArrayList<>();
+        while(this.results.next())
+        {
+            m_khach_hang kh = new m_khach_hang();
+            kh.setMa_khach_hang(this.results.getInt("ma_khach_hang"));
+            kh.setTen_khach_hang(this.results.getString("ten_khach_hang"));
+            kh.setEmail(this.results.getString("email"));
+            kh.setMat_khau(this.results.getString("mat_khau"));
+            kh.setDia_chi(this.results.getString("dia_chi"));
+            kh.setDien_thoai(this.results.getString("dien_thoai"));
+            
+            list.add(kh);
+        }
+        return list;
+    }
     
     
     public static void main(String[] args) throws SQLException
@@ -177,7 +234,7 @@ public class khach_hang_query {
         khach_hang_query kq = new khach_hang_query();
         
         m_khach_hang kh = new m_khach_hang();
-        
+        ArrayList<m_khach_hang> list = new ArrayList<>();
         //Get all ---------------------------------->
         /*
         ArrayList<m_khach_hang> list = new ArrayList<>();
@@ -215,6 +272,12 @@ public class khach_hang_query {
 //        }
 //        else
 //            System.out.print("sai");
+        
+        list = kq.tim_khach_hang("mc");
+        for(m_khach_hang k:list)
+        {
+            System.out.println(kh.getTen_khach_hang());
+        }
                 
     }
     

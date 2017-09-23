@@ -5,6 +5,8 @@
  */
 package admin_controller;
 
+import dbHelpers.hoa_don_query;
+import dbHelpers.khach_hang_query;
 import dbHelpers.loai_san_pham_cha_query;
 import dbHelpers.loai_san_pham_query;
 import dbHelpers.san_pham_query;
@@ -20,6 +22,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.m_hoa_don;
+import model.m_khach_hang;
 import model.m_loai_san_pham;
 import model.m_san_pham;
 
@@ -120,7 +124,33 @@ public class search extends HttpServlet {
                     request.setAttribute("lsp", lsp);
                     request.setAttribute("ma_loai", ma_loai);
                 break;
+                
+                case "khach_hang":
+                    view= "views/khach_hang_admin/v_search_khach_hang.jsp";
+                    url ="/khach_hang_admin.jsp";
+                    tim = request.getParameter("tim");
                     
+                    ArrayList<m_khach_hang> listkh = new ArrayList<>();
+                    
+                    khach_hang_query kq = new khach_hang_query();
+                    listkh = kq.tim_khach_hang(tim);
+                    
+                    request.setAttribute("list", listkh);
+                    request.setAttribute("tim", tim);
+                break;
+                    
+                case "hoa_don":
+                    view = "views/hoa_don_admin/v_search_hoa_don.jsp";
+                    url = "/hoa_don_admin.jsp";
+                    tim = request.getParameter("tim");
+                    ArrayList<m_hoa_don> ct_hoa_don = new ArrayList<>();
+                    hoa_don_query hq = new hoa_don_query();
+                    
+                    ct_hoa_don = hq.tim_hoa_don(tim);
+                    
+                    request.setAttribute("view", view);
+                    request.setAttribute("ct_hoa_don", ct_hoa_don);
+                break;
                     
                 
                     

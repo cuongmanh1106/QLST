@@ -40,6 +40,14 @@ function Xoasanpham(ma_san_pham)
 	}
 }
 
+function Xoahoadon(ma_hoa_don)
+{
+	if(confirm("Dữ liệu sẽ bị xóa, Không thể phục hồi lại\nBạn có chắc không?"))
+	{
+		window.location='xoa_hoa_don?ma_hoa_don=' + ma_hoa_don;
+	}
+}
+
 
 function Xoanguoidung(ma_nguoi_dung)
 {

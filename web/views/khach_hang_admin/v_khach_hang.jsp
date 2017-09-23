@@ -34,7 +34,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                              <form method="post" action="search">
-                                <input type="hidden" name="command" value="san_pham">
+                                <input type="hidden" name="command" value="khach_hang">
                                 <input type="text" name="tim" value="">
                                 <input type="submit" value="Tim">
                             </form>
@@ -69,7 +69,9 @@
                                                           
                                             <td class="center">
                                                
-
+                                                <a href="form_sua?ma_khach_hang=<%= kh.getMa_khach_hang()%>&command=khach_hang" title="Edit" >
+                                                <img src="public/images/icons/pencil.png" alt="Edit" />
+                                                </a> 
                                                
                                                 <a href="javaScript:void(0)" title="Delete" onclick="Xoasanpham(<%= kh.getMa_khach_hang()%>)"> 
                                                 <img src="public/images/icons/cross.png" alt="Delete" />

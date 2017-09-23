@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -85,16 +86,93 @@ public class hoa_don_query {
         
     }
     
+    public ArrayList<m_hoa_don> Doc_hoa_don() throws SQLException
+    {
+        String query = "select * from hoa_don";
+        PreparedStatement ps = conn.prepareStatement(query);
+        
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_hoa_don> list  = new ArrayList<>();
+        while(this.results.next())
+        {
+            m_hoa_don hd = new m_hoa_don();
+            
+            hd.setMa_hoa_don(this.results.getInt("ma_hoa_don"));
+            hd.setNgay_in(this.results.getString("ngay_in"));
+            hd.setTri_gia(this.results.getInt("tri_gia"));
+            hd.setTinh_trang(this.results.getInt("tinh_trang"));
+            hd.setMa_khach_hang(this.results.getInt("ma_khach_hang"));
+            list.add(hd);
+        }
+        return list;
+    }
+    
+    public ArrayList<m_hoa_don> Doc_hoa_don_pt(int vt, int limit) throws SQLException
+    {
+        String query = "select * from hoa_don limit ?,?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setInt(1, vt);
+        ps.setInt(2, limit);
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_hoa_don> list  = new ArrayList<>();
+        while(this.results.next())
+        {
+            m_hoa_don hd = new m_hoa_don();
+            
+            hd.setMa_hoa_don(this.results.getInt("ma_hoa_don"));
+            hd.setNgay_in(this.results.getString("ngay_in"));
+            hd.setTri_gia(this.results.getInt("tri_gia"));
+            hd.setTinh_trang(this.results.getInt("tinh_trang"));
+            hd.setMa_khach_hang(this.results.getInt("ma_khach_hang"));
+            list.add(hd);
+        }
+        return list;
+    }
+    
+    public ArrayList<m_hoa_don> tim_hoa_don(String tim) throws SQLException
+    {
+        String query = "SELECT ma_hoa_don,ngay_in,hd.ma_khach_hang,tri_gia,tinh_trang FROM hoa_don hd inner JOIN khach_hang kh ON hd.ma_khach_hang = kh.ma_khach_hang WHERE ten_khach_hang like '%"+tim+"%' ";
+        PreparedStatement ps = conn.prepareStatement(query);
+         ArrayList<m_hoa_don> list = new ArrayList<>();
+        this.results = ps.executeQuery();
+        while(this.results.next())
+        {
+            m_hoa_don hd = new m_hoa_don();
+            
+            hd.setMa_hoa_don(this.results.getInt("ma_hoa_don"));
+            hd.setNgay_in(this.results.getString("ngay_in"));
+            hd.setMa_khach_hang(this.results.getInt("ma_khach_hang"));
+            hd.setTri_gia(this.results.getInt("tri_gia"));
+            hd.setTinh_trang(this.results.getInt("tinh_trang"));
+            
+            list.add(hd);
+        }
+        return list;
+    }
+    
+    
     public static void main (String[] args) throws SQLException
     {
         hoa_don_query cq = new hoa_don_query();
         m_hoa_don ct = new m_hoa_don();
+        ArrayList<m_hoa_don> list  = new ArrayList<>();
+//        ct.setMa_khach_hang(1);
+//        ct.setTri_gia(50);
         
-        ct.setMa_khach_hang(1);
-        ct.setTri_gia(50);
         
+//        list = cq.Doc_hoa_don();
+//        for(m_hoa_don hd:list)
+//        {
+//            System.out.println(hd.getMa_hoa_don());
+//        }
         
-        System.out.print(cq.them_hoa_don(ct));
+        list = cq.tim_hoa_don("mc");
+        for(m_hoa_don hd:list)
+        {
+            System.out.println(hd.getMa_hoa_don());
+        }
     }
     
 }

@@ -5,10 +5,12 @@
  */
 package admin_controller;
 
+import dbHelpers.ct_hoa_don_query;
 import dbHelpers.san_pham_query;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -17,6 +19,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.m_chi_tiet_hoa_don;
 
 /**
  *
@@ -78,19 +81,39 @@ public class xoa_san_pham_admin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        san_pham_query sq = new san_pham_query();
-        int ma_san_pham = Integer.parseInt(request.getParameter("ma_san_pham"));
-        
         try {
-            sq.xoa_san_pham(ma_san_pham);
+            san_pham_query sq = new san_pham_query();
+            int ma_san_pham = Integer.parseInt(request.getParameter("ma_san_pham"));
+            
+            ArrayList<m_chi_tiet_hoa_don> list = new ArrayList<>();
+            
+            ct_hoa_don_query ctq = new ct_hoa_don_query();
+            
+            list = ctq.Doc_chi_tiet_hoa_don_theo_ma_san_pham(ma_san_pham);
+            
+            int count = list.size();
+            String thongbao ="";
+            
+            if(count == 0)
+            {
+                sq.xoa_san_pham(ma_san_pham);
+                thongbao = "ok";
+            }
+            else
+                thongbao = "error";
+            
+            request.setAttribute("thongbao", thongbao);
+            
+            
+            
+            
+            String url = "/san_phams_admin";
+            
+            RequestDispatcher dis = request.getRequestDispatcher(url);
+            dis.forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(xoa_san_pham_admin.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        String url = "/san_phams_admin";
-        
-        RequestDispatcher dis = request.getRequestDispatcher(url);
-        dis.forward(request, response);
         
         
         

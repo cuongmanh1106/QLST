@@ -104,6 +104,68 @@ else if(view == "views/khach_hang_admin/v_khach_hang.jsp")
 <%
     
 }
+else if(view == "views/khach_hang_admin/v_sua_khach_hang.jsp")
+{
 %>
+<%@include file="../views/khach_hang_admin/v_sua_khach_hang.jsp" %>
 
+<%
+    
+}
+else if(view == "views/khach_hang_admin/v_search_khach_hang.jsp")
+{
+%>
+<%@include file="../views/khach_hang_admin/v_search_khach_hang.jsp" %>
 
+<%
+    
+}
+else if(view == "views/hoa_don_admin/v_hoa_don.jsp")
+{
+%>
+<%@include file="../views/hoa_don_admin/v_hoa_don.jsp" %>
+
+<%
+    
+}
+else if(view == "views/hoa_don_admin/v_chi_tiet_hoa_don.jsp")
+{
+%>
+<%@include file="../views/hoa_don_admin/v_chi_tiet_hoa_don.jsp" %>
+
+<%
+    
+}
+else if(view == "views/hoa_don_admin/v_search_hoa_don.jsp")
+{
+%>
+<%@include file="../views/hoa_don_admin/v_search_hoa_don.jsp" %>
+
+<%
+    
+}
+else if(view == "views/nguoi_dung/v_nguoi_dung.jsp")
+{
+%>
+<%@include file="../views/nguoi_dung/v_nguoi_dung.jsp" %>
+
+<%
+    
+}
+else if(view == "views/nguoi_dung/v_them_nguoi_dung.jsp")
+{
+%>
+<%@include file="../views/nguoi_dung/v_them_nguoi_dung.jsp" %>
+
+<%
+    
+}
+else if(view == "views/nguoi_dung/v_sua_nguoi_dung.jsp")
+{
+%>
+<%@include file="../views/nguoi_dung/v_sua_nguoi_dung.jsp" %>
+
+<%
+    
+}
+%>

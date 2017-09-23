@@ -116,6 +116,11 @@ public class form_them extends HttpServlet {
                     
                 break;
                     
+                case "nguoi_dung":
+                    url = "/nguoi_dung_admin.jsp";
+                    view = "views/nguoi_dung/v_them_nguoi_dung.jsp";
+                    
+                    
                     
                     
             }

@@ -12,6 +12,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,7 +28,7 @@ public class nguoi_dung_query {
     
     private Connection conn;
     private ResultSet results;
-    private m_nguoi_dung kh = new m_nguoi_dung();
+   
     
     public nguoi_dung_query(){
         Properties props  = new Properties();
@@ -80,15 +83,107 @@ public class nguoi_dung_query {
         return null;
     }
     
+    public ArrayList<m_nguoi_dung> Doc_nguoi_dung() throws SQLException
+    {
+        String sql = "select * from nguoi_dung";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        this.results = ps.executeQuery();
+        
+        ArrayList<m_nguoi_dung> list = new ArrayList<>();
+        
+        while(this.results.next())
+        {
+            m_nguoi_dung nd = new m_nguoi_dung();
+            
+            nd.setMa_nguoi_dung(this.results.getInt("ma_nguoi_dung"));
+            nd.setHo_ten(this.results.getString("ho_ten"));
+            nd.setTen_dang_nhap(this.results.getString("ten_dang_nhap"));
+            nd.setMat_khau(this.results.getString("mat_khau"));
+            nd.setEmail(this.results.getString("email"));
+            nd.setNgay_dang_nhap_cuoi(this.results.getString("ngay_dang_nhap_cuoi"));
+            nd.setNgay_dang_ki(this.results.getString("ngay_dang_ki"));
+            list.add(nd);
+        }
+        return list;
+        
+        
+    }
+    
+    public  m_nguoi_dung Doc_nguoi_dung_theo_ma_nguoi_dung(int ma_nguoi_dung) throws SQLException
+    {
+        String sql = "select * from nguoi_dung where ma_nguoi_dung = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, ma_nguoi_dung);
+        
+        
+        this.results = ps.executeQuery();
+        
+        if(this.results.next())
+        {
+            m_nguoi_dung nd = new m_nguoi_dung();
+            
+            nd.setTen_dang_nhap(this.results.getString("ten_dang_nhap"));
+            nd.setHo_ten(this.results.getString("ho_ten"));
+            nd.setMat_khau(this.results.getString("mat_khau"));
+            nd.setEmail(this.results.getString("email"));
+            nd.setMa_nguoi_dung(this.results.getInt("ma_nguoi_dung"));
+            return nd;
+        }
+        return null;
+    }
+    
+    public void Xoa_nguoi_dung(int ma_nguoi_dung) throws SQLException
+    {
+        String sql = "delete from nguoi_dung where ma_nguoi_dung=? ";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, ma_nguoi_dung);
+        
+        ps.executeUpdate();
+    }
+    
+    public void Them_nguoi_dung(m_nguoi_dung nd) throws SQLException
+    {
+        String sql = "insert into nguoi_dung(ho_ten,ten_dang_nhap,mat_khau,email,ngay_dang_ki,ngay_dang_nhap_cuoi) values(?,?,?,?,?,?)";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        
+        ps.setString(1, nd.getHo_ten());
+        ps.setString(2, nd.getTen_dang_nhap());
+        ps.setString(3, nd.getMat_khau());
+        ps.setString(4, nd.getEmail());
+        Date d = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+        ps.setString(5, ft.format(d));
+        ps.setString(6, ft.format(d));
+        
+        ps.executeUpdate();
+    }
+    
+    public void cap_nhat_nguoi_dung(m_nguoi_dung nd) throws SQLException
+    {
+        String sql = "update nguoi_dung set ho_ten=?,ten_dang_nhap=?,mat_khau=?,email=? where ma_nguoi_dung=?";
+        
+        PreparedStatement ps = conn.prepareStatement(sql);
+        
+        ps.setString(1, nd.getHo_ten());
+        ps.setString(2, nd.getTen_dang_nhap());
+        ps.setString(3, nd.getMat_khau());
+        ps.setString(4, nd.getEmail());
+        ps.setInt(5, nd.getMa_loai_nguoi_dung());
+        
+        ps.executeUpdate();
+    }
+    
     public static void main(String[] args) throws SQLException
     {
         m_nguoi_dung nd = new m_nguoi_dung();
         nguoi_dung_query nq = new nguoi_dung_query();
         
-        nd = nq.dang_nhap_admin("zc", "123");
-        
-        System.out.println(nd);
-        
+//        nd = nq.dang_nhap_admin("zc", "123");
+//        
+//        System.out.println(nd);
+          
+        nd = nq.Doc_nguoi_dung_theo_ma_nguoi_dung(1);
+        System.out.println(nd.getHo_ten());
     }
     
 }
